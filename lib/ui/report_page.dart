@@ -9,6 +9,8 @@ class Report {
     this.isSelect,
   );
 }
+  );
+}
 
 class ReportPage extends StatefulWidget {
   const ReportPage({super.key});
@@ -49,50 +51,51 @@ class _ReportPageState extends State<ReportPage> {
       )),
       body: Column(
         children: [
-          Expanded(
-            child: ListView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: reportName.length,
-              itemBuilder: (context, index) {
-                return CheckboxListTile(
-                  title: Row(
-                    children: [
-                      const SizedBox(width: 8),
-                      Text(
-                        reportList[index].title,
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: colorScheme.onBackground,
+          Expanded(child: 
+          ListView.builder(
+            physics: NeverScrollableScrollPhysics(),
+                itemCount: reportName.length,
+                itemBuilder: (context, index) {
+                  return CheckboxListTile(
+                    title: Row(
+                      children: [
+                        const SizedBox(width: 8),
+                        Text(
+                          reportList[index].title,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: colorScheme.onBackground,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
+                    value: reportList[index].isSelect,
+                    onChanged: (value) { setState(() {
+      reportList[index].isSelect = value!;
+    });},
+                  );
+                },
+              ),),
+              TextButton(
+                  onPressed: () {Navigator.of(context).pop();},
+                  style: TextButton.styleFrom(
+                    backgroundColor: colorScheme.primary,
+                    padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+                    fixedSize: Size.fromWidth(
+                      MediaQuery.of(context).size.width * 0.5,
+                    ),
                   ),
-                  value: reportList[index].isSelect,
-                  onChanged: (value) {},
-                );
-              },
-            ),
-          ),
-          TextButton(
-            onPressed: () {},
-            style: TextButton.styleFrom(
-              backgroundColor: colorScheme.primary,
-              padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-              fixedSize: Size.fromWidth(
-                MediaQuery.of(context).size.width * 0.5,
-              ),
-            ),
-            child: Text(
-              '신고 완료',
-              style: TextStyle(
-                color: colorScheme.onPrimary.withAlpha(240),
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          const SizedBox(height: 25),
+                  child: Text(
+                    '신고 완료',
+                    style: TextStyle(
+                      color: colorScheme.onPrimary.withAlpha(240),
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 25),
         ],
       ),
     );
