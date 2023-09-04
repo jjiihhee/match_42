@@ -37,10 +37,6 @@ class _ReportPageState extends State<ReportPage> {
           title: const Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          // SizedBox(width: 65),
-          // Icon(Icons.warning_rounded,
-          // size: 32.0,
-          // color: Colors.red,),
           Text(
             ' 신고 사유',
             style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w700),
