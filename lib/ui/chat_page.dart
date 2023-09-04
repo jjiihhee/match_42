@@ -140,8 +140,9 @@ class MessageSender extends StatelessWidget {
         ElevatedButton(
           onPressed: () {
             showDialog(
-                        context: context,
-                        builder: (context) => MakeTopic(),);
+              context: context,
+              builder: (context) => MakeTopic(),
+            );
           },
           style: ElevatedButton.styleFrom(
             shape: const CircleBorder(),
