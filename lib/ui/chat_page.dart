@@ -212,12 +212,8 @@ class MessageSender extends StatelessWidget {
           onPressed: () {
             showDialog(
               context: context,
-<<<<<<< HEAD
-              builder: (context) => MakeTopic(),
-=======
               builder: (context) => ChangeNotifierProvider.value(
                   value: viewModel, child: const MakeTopic()),
->>>>>>> f9e65e84571613fbefa3e206e631f7188e2e8b93
             );
           },
           style: ElevatedButton.styleFrom(
